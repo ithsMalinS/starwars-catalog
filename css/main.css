@@ -1,0 +1,107 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-size: calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+}
+h1, h3 {
+    color: #FFD600;
+}
+
+.container {
+    height: 100vh;
+}
+
+header {
+    background: black;
+    height: 34%;
+    color: #FFD600;
+
+    font-family: sans-serif;
+        /* Ropa Sans */
+    display: flex;
+    align-items: center;
+}
+
+main {
+    background: #424242;
+    height: 66%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.characters, .details {
+    width: 35%;
+    margin-top: -5%;
+    height: 95%;
+}
+.characters {
+    background: #C4C4C4;
+}
+.characters-header {
+    background: #535556;
+    height: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.character-list {
+    height: 52.5%;
+}
+
+.character-list > ul > li {
+    padding: 2%;
+}
+.character-list > ul {
+    display: flex;
+    flex-direction: column;
+    flex-basis: auto;
+    list-style-type: none;
+}
+
+.character-list > ul > li:nth-child(even) {
+    background: #E1DEDE;
+    color: #535556;
+}
+
+.character-list > ul > li:nth-child(6n-1) {
+    background: #8E8E8E;
+    color: #FFFFFF;
+}
+.character-list > ul > li:nth-child(6n-3) {
+    background: #444444;
+    color: #FFFFFF;
+}
+.character-list > ul > li:nth-child(6n-5) {
+    background: #8E8E8E;
+    color: #FFFFFF;
+}
+
+
+
+.navigation {
+    background: #C4C4C4;
+    height: 32.5%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.details {
+    background: pink;
+}
+.details-header {
+    background: #748687;
+    height: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.character-details {
+    background: #C4C4C4;
+    height: 42.5%;
+}
+.planet-details {
+    height: 42.5%;
+    background: #8E8E8E;
+}
