@@ -1,3 +1,14 @@
+async function renderPeople(charL) {
+  const characters = document.querySelectorAll(".character-list > ul > li");
+  const characterL = document.querySelector(".character-list > ul");
+  characterL.innerHTML =
+    "<li></li><li></li><li></li><li></li><li></li><li></li>";
+
+  for (let i = 0; i < characters.length; i++) {
+    console.log(charL[i]);
+    characters[i].innerHTML = charL[i].name;
+  }
+}
 async function fetchData(url) {
   //document.querySelector("").classList.remove("hidden");
   let request = await fetch(url);
@@ -19,15 +30,5 @@ async function makeReqPeople() {
   }
   await renderPeople(temp);
 }
-async function renderPeople(charL) {
-  const characters = document.querySelectorAll(".character-list > ul > li");
-  const characterL = document.querySelector(".character-list > ul");
-  characterL.innerHTML =
-    "<li></li><li></li><li></li><li></li><li></li><li></li>";
 
-  for (let i = 0; i < characters.length; i++) {
-    console.log(charL[i]);
-    characters[i].innerHTML = charL[i];
-  }
-}
 makeReqPeople();

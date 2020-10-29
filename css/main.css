@@ -18,7 +18,7 @@ header {
     background: black;
     background-image: url('/assets/sw-header.jpg');
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
     height: 45%;
     color: #FFD600;
 
