@@ -11,16 +11,23 @@ async function makeReqPeople() {
   for (current of t.results) {
     temp.push(current);
   }
-  console.log(t);
   while (t.next != null) {
     t = await fetchData(t.next);
     for (current of t.results) {
       temp.push(current);
     }
-    console.log(temp);
   }
-  return temp;
+  await renderPeople(temp);
 }
-const people = makeReqPeople();
+async function renderPeople(charL) {
+  const characters = document.querySelectorAll(".character-list > ul > li");
+  const characterL = document.querySelector(".character-list > ul");
+  characterL.innerHTML =
+    "<li></li><li></li><li></li><li></li><li></li><li></li>";
 
-console.log(people[0].name);
+  for (let i = 0; i < characters.length; i++) {
+    console.log(charL[i]);
+    characters[i].innerHTML = charL[i];
+  }
+}
+makeReqPeople();
