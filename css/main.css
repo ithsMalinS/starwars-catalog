@@ -94,7 +94,6 @@ main {
     align-items: flex-end;
     font-size: 25px;
     letter-spacing: 7px;
-    font-weight: bold;
 }
 
 .navigation > span {
@@ -105,15 +104,16 @@ main {
     background-color: inherit;
     font-size: 25px;
     border: none;
+    letter-spacing: 7px;
 }
 
-.prev {
+/* .prev {
     margin-right: 15px;
 }
 
 .next {
     margin-left: 10px;
-}
+} */
 
 /* .details {
     background: pink;
