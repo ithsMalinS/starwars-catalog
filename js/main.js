@@ -1,12 +1,12 @@
 async function renderPeople(charL) {
-  const characters = document.querySelectorAll(".character-list > ul > li");
   const characterL = document.querySelector(".character-list > ul");
   characterL.innerHTML =
     "<li></li><li></li><li></li><li></li><li></li><li></li>";
+  const characters = document.querySelectorAll(".character-list > ul > li");
 
   for (let i = 0; i < characters.length; i++) {
     console.log(charL[i]);
-    characters[i].innerHTML = charL[i].name;
+    characters[i].innerText = charL[i].name;
   }
 }
 async function fetchData(url) {
