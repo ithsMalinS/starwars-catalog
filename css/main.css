@@ -4,6 +4,7 @@
 }
 body {
     font-size: calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+    font-family: 'Ropa Sans', sans-serif;
 }
 h1, h3 {
     color: #FFD600;
@@ -15,7 +16,10 @@ h1, h3 {
 
 header {
     background: black;
-    height: 34%;
+    background-image: url('/assets/sw-header.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 45%;
     color: #FFD600;
 
     font-family: sans-serif;
@@ -32,18 +36,21 @@ main {
 }
 .characters, .details {
     width: 35%;
-    margin-top: -5%;
+    margin-top: -2%;
     height: 95%;
 }
-.characters {
+/* .characters {
     background: #C4C4C4;
-}
+} */
 .characters-header {
     background: #535556;
     height: 15%;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    border: 1px solid #535556;
+    border-radius: 10px 10px 0 0;
 }
 .character-list {
     height: 52.5%;
@@ -85,17 +92,41 @@ main {
     display: flex;
     justify-content: center;
     align-items: flex-end;
+    font-size: 25px;
+    letter-spacing: 7px;
+    font-weight: bold;
 }
 
-.details {
-    background: pink;
+.navigation > span {
+    margin-bottom: 2px;
 }
+
+.navigation > button {
+    background-color: inherit;
+    font-size: 25px;
+    border: none;
+}
+
+.prev {
+    margin-right: 15px;
+}
+
+.next {
+    margin-left: 10px;
+}
+
+/* .details {
+    background: pink;
+} */
 .details-header {
     background: #748687;
     height: 15%;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    border: 1px solid #748687;
+    border-radius: 10px 10px 0 0;
 }
 .character-details {
     background: #C4C4C4;
