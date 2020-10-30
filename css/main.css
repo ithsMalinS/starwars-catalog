@@ -62,11 +62,15 @@ main {
     display: flex;
     flex-direction: column;
 }
-
 .character-list > ul > li {
     padding: 2%;
     font-size: 0.9em;
     cursor: pointer;
+}
+.character-list > ul > li span {
+    position: relative;
+    margin-left: 4px;
+    top: 1px;
 }
 .character-list > ul {
     display: flex;
@@ -74,7 +78,6 @@ main {
     flex: 1 1 auto;
     list-style-type: none;
 }
-
 .character-list > ul > li:nth-child(even) {
     background: #E1DEDE;
     color: #535556;
@@ -120,15 +123,6 @@ main {
     transform: rotate(180deg);
     margin-right: 7px;
 }
-
-/* .prev {
-    margin-right: 15px;
-}
-
-.next {
-    margin-left: 10px;
-} */
-
 
 .details-header {
     background: #748687;
