@@ -162,7 +162,7 @@ main {
     cursor: pointer;
     outline: none;
 }
-.planet-details {
+.details2 {
     height: 37.5%;
     background: #8E8E8E;
     color: white;
@@ -170,7 +170,7 @@ main {
     display: flex;
     flex-direction: column;
 }
-.planet-details > p {
+.details2 > p {
     font-size: 0.65em;
     padding: 0 5%;
 }
