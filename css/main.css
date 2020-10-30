@@ -112,6 +112,7 @@ main {
     border: none;
     letter-spacing: 7px;
     cursor: pointer;
+    outline: none;
 }
 .prev {
     transform: rotate(180deg);
