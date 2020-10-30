@@ -63,6 +63,7 @@ main {
 
 .character-list > ul > li {
     padding: 2%;
+    cursor: pointer;
 }
 .character-list > ul {
     display: flex;
@@ -108,19 +109,9 @@ main {
     font-size: 25px;
     border: none;
     letter-spacing: 7px;
+    cursor: pointer;
 }
 
-/* .prev {
-    margin-right: 15px;
-}
-
-.next {
-    margin-left: 10px;
-} */
-
-/* .details {
-    background: pink;
-} */
 .details-header {
     background: #748687;
     height: 15%;
