@@ -71,7 +71,7 @@ async function makeReqPeople() {
   const characterL = document.querySelector(".character-list > ul");
   characterL.innerHTML = '<div class="loader"></div>'
   let t = await fetchData("https://swapi.dev/api/people/");
-  temp = [];
+  const temp = [];
   for (current of t.results) {
     temp.push(current);
   }
