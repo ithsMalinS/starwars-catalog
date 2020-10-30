@@ -44,13 +44,17 @@ async function renderPeople(charL) {
   const characters = document.querySelectorAll(".character-list > ul > li");
 
   for (let i = 0; i < characters.length; i++) {
-    characters[i].innerText = charL[i+(counter*6)].name;
+    characters[i].innerHTML = charL[i+(counter*6)].name + '<span class="hidden"> ▸</span>';
     characters[i].addEventListener("click", function () {
-      for(character of characters) {
-        character.classList.remove('chosen-character')
+      let charSpan = document.querySelectorAll(".character-list span")
+      for(let i = 0; i < characters.length; i++) {
+        characters[i].classList.remove('chosen-character')
+        charSpan[i].classList.add("hidden")
       }
       renderDetails(charL[i+(counter*6)]);
       characters[i].classList.add("chosen-character")
+      const chosenChar = document.querySelector(".chosen-character > span")
+      chosenChar.classList.remove("hidden")
       //characters[i].innerText += '▸'
     });
   }

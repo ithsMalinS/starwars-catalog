@@ -171,7 +171,9 @@ h4 {
 }
 
 
-
+.hidden {
+    display: none;
+}
 .loader {
     justify-self: center;
     align-self: center;
