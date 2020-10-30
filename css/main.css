@@ -136,7 +136,7 @@ main {
 }
 .character-details {
     background: #C4C4C4;
-    height: 42.5%;
+    height: 37.5%;
     letter-spacing: 3px;
     display: flex;
     flex-direction: column;
@@ -146,11 +146,11 @@ main {
     padding: 0 5%;
 }
 .details-nav {
+    justify-self: flex-end;
     display: flex;
     justify-content: space-evenly;
-    background-color: #C4C4C4;
-    position: relative;
-    top: 100%;
+    height: 10%;
+    background: #C4C4C4;
 }
 .details-nav button {
     background-color: #EBEBEB;
@@ -160,9 +160,10 @@ main {
     font-size: 0.7em;
     color: #8C7600;
     cursor: pointer;
+    outline: none;
 }
 .planet-details {
-    height: 42.5%;
+    height: 37.5%;
     background: #8E8E8E;
     color: white;
     letter-spacing: 3px;
