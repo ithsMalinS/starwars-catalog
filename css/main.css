@@ -145,6 +145,22 @@ main {
     font-size: 0.65em;
     padding: 0 5%;
 }
+.details-nav {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #C4C4C4;
+    position: relative;
+    top: 100%;
+}
+.details-nav button {
+    background-color: #EBEBEB;
+    border: none;
+    border-radius: 5px 5px 0 0;
+    padding: 10px;
+    font-size: 0.7em;
+    color: #8C7600;
+    cursor: pointer;
+}
 .planet-details {
     height: 42.5%;
     background: #8E8E8E;
