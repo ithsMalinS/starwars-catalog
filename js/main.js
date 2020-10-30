@@ -55,7 +55,13 @@ async function renderPeople(charL) {
         characters[i].classList.remove('chosen-character')
         charSpan[i].classList.add("hidden")
       }
-      document.querySelector('.details-nav').classList.remove('hidden')
+      const NavButton = document.querySelectorAll('.dNavButton')
+      for (current of NavButton) {
+        current.classList.remove('hidden')
+        current.addEventListener("click", function() {
+          console.log(current.innerText)
+        })
+      }
       renderDetails(charL[i+(counter*6)]);
       characters[i].classList.add("chosen-character")
       const chosenChar = document.querySelector(".chosen-character > span")
@@ -86,6 +92,7 @@ async function makeReqPeople() {
       temp.push(current);
     }
   }
+  console.log(temp)
   await renderPeople(temp);
 }
 
