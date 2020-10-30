@@ -51,6 +51,7 @@ async function renderPeople(charL) {
         characters[i].classList.remove('chosen-character')
         charSpan[i].classList.add("hidden")
       }
+      document.querySelector('.details-nav').classList.remove('hidden')
       renderDetails(charL[i+(counter*6)]);
       characters[i].classList.add("chosen-character")
       const chosenChar = document.querySelector(".chosen-character > span")
