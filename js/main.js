@@ -1,6 +1,8 @@
 let counter = 0
 const prevButton = document.querySelector(".prev");
 const nextButton = document.querySelector(".next");
+const details = document.querySelector(".character-details");
+const detailsOutput = document.querySelector(".details2");
 
 prevButton.addEventListener("click", function() {
   const pageCount = document.querySelector(".current-side")
@@ -21,22 +23,19 @@ nextButton.addEventListener("click", function() {
   makeReqPeople()
 })
 
-async function renderDetails(t) {
+async function renderDetails(charL, t) {
   setTimeout(function() {
     details.innerHTML =
     `<h4>${charL.name}</h4><p>Height: ${charL.height} cm</p><p>Mass: ${charL.mass} kg</p><p>Hair color: ${charL.hair_color}</p><p>Skin color: ${charL.skin_color}</p><p>Eye color: ${charL.eye_color}</p><p>Birth year: ${charL.birth_year}</p><p>Gender: ${charL.gender}</p>`;
     detailsOutput.innerHTML = `<h4>${t.name}</h4><p>Rotation period: ${t.rotation_period} hours</p><p>Orbital period: ${t.orbital_period} days</p><p>Diameter: ${t.diameter} km</p><p>Climate: ${t.climate}</p><p>Gravity: ${t.gravity}</p><p>Terrain: ${t.terrain}</p>`
   }, 1000)
 }
-async function makeReqDetails(charL) {
-  const details = document.querySelector(".character-details");
-  const detailsOutput = document.querySelector(".details2");
-
+async function makeReqDetails(charL, namnet) {
   details.innerHTML = '<div class="loader"></div>'
   detailsOutput.innerHTML = '<div class="loader"></div>'
-  let t = await fetchData(charL.homeworld);
-  
-  renderDetails(t)
+  let t = await fetchData(charL[namnet]);
+
+  renderDetails(charL, t)
 }
 async function renderPeople(charL) {
   const characterL = document.querySelector(".character-list > ul");
@@ -63,7 +62,7 @@ async function renderPeople(charL) {
           console.log(current.innerText)
         })
       }
-      makeReqDetails(charL[i+(counter*6)]);
+      makeReqDetails(charL[i+(counter*6)], "homeworld");
       characters[i].classList.add("chosen-character")
       const chosenChar = document.querySelector(".chosen-character > span")
       chosenChar.classList.remove("hidden")
