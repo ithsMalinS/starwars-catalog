@@ -22,13 +22,16 @@ nextButton.addEventListener("click", function() {
 })
 
 async function renderDetails(charL) {
-  let t = await fetchData(charL.homeworld);
   const details = document.querySelector(".character-details");
   const planets = document.querySelector(".planet-details");
-  await console.log(t);
-  details.innerHTML =
-  `<h4>${charL.name}</h4><p>Height: ${charL.height} cm</p><p>Mass: ${charL.mass} kg</p><p>Hair color: ${charL.hair_color}</p><p>Skin color: ${charL.skin_color}</p><p>Eye color: ${charL.eye_color}</p><p>Birth year: ${charL.birth_year}</p><p>Gender: ${charL.gender}</p>`;
-  planets.innerHTML = `<h4>${t.name}</h4><p>Rotation period: ${t.rotation_period} hours</p><p>Orbital period: ${t.orbital_period} days</p><p>Diameter: ${t.diameter} km</p><p>Climate: ${t.climate}</p><p>Gravity: ${t.gravity}</p><p>Terrain: ${t.terrain}</p>`
+  details.innerHTML = '<div class="loader"></div>'
+  planets.innerHTML = '<div class="loader"></div>'
+  let t = await fetchData(charL.homeworld);
+  setTimeout(function() {
+    details.innerHTML =
+    `<h4>${charL.name}</h4><p>Height: ${charL.height} cm</p><p>Mass: ${charL.mass} kg</p><p>Hair color: ${charL.hair_color}</p><p>Skin color: ${charL.skin_color}</p><p>Eye color: ${charL.eye_color}</p><p>Birth year: ${charL.birth_year}</p><p>Gender: ${charL.gender}</p>`;
+    planets.innerHTML = `<h4>${t.name}</h4><p>Rotation period: ${t.rotation_period} hours</p><p>Orbital period: ${t.orbital_period} days</p><p>Diameter: ${t.diameter} km</p><p>Climate: ${t.climate}</p><p>Gravity: ${t.gravity}</p><p>Terrain: ${t.terrain}</p>`
+  }, 1000)
 }
 async function renderPeople(charL) {
   const characterL = document.querySelector(".character-list > ul");
@@ -61,6 +64,8 @@ async function fetchData(url) {
   return data;
 }
 async function makeReqPeople() {
+  const characterL = document.querySelector(".character-list > ul");
+  characterL.innerHTML = '<div class="loader"></div>'
   let t = await fetchData("https://swapi.dev/api/people/");
   temp = [];
   for (current of t.results) {
