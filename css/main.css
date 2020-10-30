@@ -13,6 +13,9 @@ h1, h3 {
 
 .container {
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
 }
 
 header {
@@ -22,20 +25,19 @@ header {
     background-size: cover;
     height: 45%;
     color: #FFD600;
-
     display: flex;
     align-items: center;
 }
 
 header > h1 {
-    font-size: 3.7rem;
+    font-size: 3.7em;
     font-weight: 100;
     margin-left: 5%;
 }
 
 main {
     background: #424242;
-    height: 66%;
+    height: 65%;
     display: flex;
     justify-content: space-evenly;
 }
@@ -43,10 +45,7 @@ main {
     width: 35%;
     margin-top: -2%;
     height: 95%;
-}
-/* .characters {
-    background: #C4C4C4;
-} */
+} 
 .characters-header {
     background: #535556;
     height: 15%;
@@ -59,15 +58,17 @@ main {
 }
 .character-list {
     height: 52.5%;
+    background: #C4C4C4;
 }
 
 .character-list > ul > li {
     padding: 2%;
+    font-size: 0.9em;
 }
 .character-list > ul {
     display: flex;
     flex-direction: column;
-    flex-basis: auto;
+    flex: 1 1 auto;
     list-style-type: none;
 }
 
@@ -99,15 +100,20 @@ main {
     letter-spacing: 7px;
 }
 
+
 .navigation > span {
     margin-bottom: 2px;
 }
 
 .navigation > button {
     background-color: inherit;
-    font-size: 25px;
+    font-size: 0.85em;
     border: none;
     letter-spacing: 7px;
+}
+.prev {
+    transform: rotate(180deg);
+    margin-right: 7px;
 }
 
 /* .prev {
@@ -118,9 +124,7 @@ main {
     margin-left: 10px;
 } */
 
-/* .details {
-    background: pink;
-} */
+
 .details-header {
     background: #748687;
     height: 15%;
@@ -137,7 +141,7 @@ main {
     letter-spacing: 3px;
 }
 .character-details > p {
-    font-size: 1rem;
+    font-size: 0.65em;
     padding: 0 5%;
 }
 .planet-details {
@@ -147,7 +151,7 @@ main {
     letter-spacing: 3px;
 }
 .planet-details > p {
-    font-size: 1.1rem;
+    font-size: 0.65em;
     padding: 0 5%;
 }
 

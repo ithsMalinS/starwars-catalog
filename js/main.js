@@ -1,4 +1,25 @@
 let counter = 0
+const prevButton = document.querySelector(".prev");
+const nextButton = document.querySelector(".next");
+
+prevButton.addEventListener("click", function() {
+  const pageCount = document.querySelector(".current-side")
+  counter--
+  if(counter < 0) {
+    counter = 13
+  }
+  pageCount.innerHTML = counter +1
+  makeReqPeople(counter)
+})
+nextButton.addEventListener("click", function() {
+  const pageCount = document.querySelector(".current-side")
+  counter++
+  if(counter > 13) {
+    counter = 0
+  }
+  pageCount.innerHTML = counter +1
+  makeReqPeople()
+})
 
 async function renderDetails(charL) {
   let t = await fetchData(charL.homeworld);
@@ -13,15 +34,19 @@ async function renderPeople(charL) {
   const characterL = document.querySelector(".character-list > ul");
   characterL.innerHTML =
     "<li></li><li></li><li></li><li></li><li></li><li></li>";
+    if (counter === 13) {
+      characterL.innerHTML =
+      "<li></li><li></li><li></li><li></li>";
+    }
   const characters = document.querySelectorAll(".character-list > ul > li");
 
   for (let i = 0; i < characters.length; i++) {
-    characters[i].innerText = charL[i].name;
+    characters[i].innerText = charL[i+(counter*6)].name;
     characters[i].addEventListener("click", function () {
       for(character of characters) {
         character.classList.remove('chosen-character')
       }
-      renderDetails(charL[i]);
+      renderDetails(charL[i+(counter*6)]);
       characters[i].classList.add("chosen-character")
       //characters[i].innerText += '▸'
     });
