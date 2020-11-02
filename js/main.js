@@ -25,7 +25,7 @@ nextButton.addEventListener("click", function() {
   makeReqPeople()
 })
 function renderNoInfo(namnet) {
-  detailsOutput.innerHTML = `there is no ${namnet}`
+  detailsOutput.innerHTML = `<h4>there is no ${namnet}</h4>`
 }
 async function renderDetails(charL, t) {
   
