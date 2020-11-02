@@ -34,14 +34,17 @@ async function renderDetails(charL, t) {
     `<h4>${charL.name}</h4><p>Height: ${charL.height} cm</p><p>Mass: ${charL.mass} kg</p><p>Hair color: ${charL.hair_color}</p><p>Skin color: ${charL.skin_color}</p><p>Eye color: ${charL.eye_color}</p><p>Birth year: ${charL.birth_year}</p><p>Gender: ${charL.gender}</p>`;
     
     console.log(charL)
-    if (t.url == charL.homeworld) {
-      detailsOutput.innerHTML = `<h4>${t.name}</h4><p>Rotation period: ${t.rotation_period} hours</p><p>Orbital period: ${t.orbital_period} days</p><p>Diameter: ${t.diameter} km</p><p>Climate: ${t.climate}</p><p>Gravity: ${t.gravity}</p><p>Terrain: ${t.terrain}</p>`
-    } else if (t.url == charL.species) {
+    console.log(t)
+    if (t.url == charL.species) {
       detailsOutput.innerHTML = `<h4>${t.name}</h4>`
-    } else if (t.url == charL.starships){
+    } else if (t.url == charL.homeworld) {
+      detailsOutput.innerHTML = `<h4>${t.name}</h4><p>Rotation period: ${t.rotation_period} hours</p><p>Orbital period: ${t.orbital_period} days</p><p>Diameter: ${t.diameter} km</p><p>Climate: ${t.climate}</p><p>Gravity: ${t.gravity}</p><p>Terrain: ${t.terrain}</p>`
+    } else if (t.url == charL.starships[0]){
       detailsOutput.innerHTML = `<h4>${t.name}</h4><p>model: ${t.model} hours</p><p>manufacturer: ${t.manufacturer} </p><p>length: ${t.length} </p><p>crew: ${t.crew}</p><p>passengers: ${t.passengers}</p><p>starship_class: ${t.starship_class}</p>`
-    } else {
+    } else if (t.url == charL.vehicles[0]){
       detailsOutput.innerHTML = `<h4>${t.name}</h4><p>Model: ${t.model} </p><p>Manufacturer: ${t.manufacturer} </p><p>Cost in credits: ${t.cost_in_credits}</p><p>Length: ${t.length} </p><p>Max Speed: ${t.max_atmosphering_speed}</p><p>Vehicle class: ${t.vehicle_class}</p>`
+    }  else {
+      detailsOutput.innerHTML == 'There was a problem'
     }
   }, 1000)
 }
