@@ -3,7 +3,7 @@ const prevButton = document.querySelector(".prev");
 const nextButton = document.querySelector(".next");
 const details = document.querySelector(".character-details");
 const detailsOutput = document.querySelector(".details2");
-
+let characterList = []
 let currentPerson
 
 prevButton.addEventListener("click", function() {
@@ -55,7 +55,6 @@ async function makeReqDetails(charL, namnet) {
     if (namnet == 'vehicles' || namnet == 'starships') {
       t = await fetchData(charL[namnet][0]);
     } else {
-    console.log('hallå')
     t = await fetchData(charL[namnet]);
   }
   renderDetails(charL, t)
@@ -113,20 +112,26 @@ async function fetchData(url) {
   return data;
 }
 async function makeReqPeople() {
-  const characterL = document.querySelector(".character-list > ul");
-  characterL.innerHTML = '<div class="loader"></div>'
-  let t = await fetchData("https://swapi.dev/api/people/");
-  const temp = [];
-  for (current of t.results) {
-    temp.push(current);
-  }
-  while (t.next != null) {
-    t = await fetchData(t.next);
+  if (characterList.length === 0) {
+    const characterL = document.querySelector(".character-list > ul");
+    characterL.innerHTML = '<div class="loader"></div>'
+    let t = await fetchData("https://swapi.dev/api/people/");
+    const temp = [];
     for (current of t.results) {
       temp.push(current);
     }
+    while (t.next != null) {
+      t = await fetchData(t.next);
+      for (current of t.results) {
+        temp.push(current);
+      }
+    }
+    characterList = temp
+    await renderPeople(temp);
+  } else {
+    renderPeople(characterList)
+    console.log(characterList)
   }
-  await renderPeople(temp);
 }
 
 makeReqPeople();
