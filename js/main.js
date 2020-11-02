@@ -24,7 +24,9 @@ nextButton.addEventListener("click", function() {
   pageCount.innerHTML = counter +1
   makeReqPeople()
 })
-
+function renderNoInfo(namnet) {
+  detailsOutput.innerHTML = `there is no ${namnet}`
+}
 async function renderDetails(charL, t) {
   
   setTimeout(function() {
@@ -44,17 +46,20 @@ async function renderDetails(charL, t) {
   }, 1000)
 }
 async function makeReqDetails(charL, namnet) {
-  details.innerHTML = '<div class="loader"></div>'
   detailsOutput.innerHTML = '<div class="loader"></div>'
   let t
-  
-  if (namnet == 'vehicles' || namnet == 'starships') {
-    t = await fetchData(charL[namnet][0]);
+  if (charL[namnet].length === 0) {
+    renderNoInfo(namnet)
   } else {
-    //console.log('hallå')
+    details.innerHTML = '<div class="loader"></div>'
+    if (namnet == 'vehicles' || namnet == 'starships') {
+      t = await fetchData(charL[namnet][0]);
+    } else {
+    console.log('hallå')
     t = await fetchData(charL[namnet]);
   }
   renderDetails(charL, t)
+  }
 }
 async function renderPeople(charL) {
   const characterL = document.querySelector(".character-list > ul");
