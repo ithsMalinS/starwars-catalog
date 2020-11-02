@@ -4,7 +4,7 @@ const nextButton = document.querySelector(".next");
 const details = document.querySelector(".character-details");
 const detailsOutput = document.querySelector(".details2");
 let characterList = []
-let currentPerson
+let currentCharacter
 
 prevButton.addEventListener("click", function() {
   const pageCount = document.querySelector(".current-side")
@@ -46,12 +46,16 @@ async function renderDetails(charL, t) {
   }, 1000)
 }
 async function makeReqDetails(charL, namnet) {
-  detailsOutput.innerHTML = '<div class="loader"></div>'
+  if (charL.name != currentCharacter.name) {
+    details.innerHTML = '<div class="loader"></div>'
+  }
+
+
   let t
   if (charL[namnet].length === 0) {
     renderNoInfo(namnet)
   } else {
-    details.innerHTML = '<div class="loader"></div>'
+    detailsOutput.innerHTML = '<div class="loader"></div>'
     if (namnet == 'vehicles' || namnet == 'starships') {
       t = await fetchData(charL[namnet][0]);
     } else {
@@ -73,7 +77,7 @@ async function renderPeople(charL) {
   for (let i = 0; i < characters.length; i++) {
     characters[i].innerHTML = charL[i+(counter*6)].name + '<span class="hidden"> ▸</span>';
     characters[i].addEventListener("click", function () {
-      currentPerson = charL[i+(counter*6)]
+      currentCharacter = charL[i+(counter*6)]
       //console.log(currentPerson)
       let charSpan = document.querySelectorAll(".character-list span")
       for(let i = 0; i < characters.length; i++) {
@@ -97,9 +101,9 @@ async function renderPeople(charL) {
   for (let i = 0; i < navbtns.length; i++) {
     navbtns[i].addEventListener('click', function() {
       if (this.innerText == 'Planet') {
-        makeReqDetails(currentPerson, 'homeworld')
+        makeReqDetails(currentCharacter, 'homeworld')
       } else {
-        makeReqDetails(currentPerson, this.innerText.toLowerCase())
+        makeReqDetails(currentCharacter, this.innerText.toLowerCase())
       }
     })
   }
