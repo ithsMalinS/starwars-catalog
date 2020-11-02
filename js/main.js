@@ -39,7 +39,7 @@ async function renderDetails(charL, t) {
     } else if (t.url == charL.species) {
       detailsOutput.innerHTML = `<h4>${t.name}</h4>`
     } else if (t.url == charL.starships){
-      detailsOutput.innerHTML = `<h4>${t.name}</h4>`
+      detailsOutput.innerHTML = `<h4>${t.name}</h4><p>model: ${t.model} hours</p><p>manufacturer: ${t.manufacturer} </p><p>length: ${t.length} </p><p>crew: ${t.crew}</p><p>passengers: ${t.passengers}</p><p>starship_class: ${t.starship_class}</p>`
     } else {
       detailsOutput.innerHTML = `<h4>${t.name}</h4><p>Model: ${t.model} </p><p>Manufacturer: ${t.manufacturer} </p><p>Cost in credits: ${t.cost_in_credits}</p><p>Length: ${t.length} </p><p>Max Speed: ${t.max_atmosphering_speed}</p><p>Vehicle class: ${t.vehicle_class}</p>`
     }
