@@ -31,15 +31,15 @@ async function renderDetails(charL, t) {
     details.innerHTML =
     `<h4>${charL.name}</h4><p>Height: ${charL.height} cm</p><p>Mass: ${charL.mass} kg</p><p>Hair color: ${charL.hair_color}</p><p>Skin color: ${charL.skin_color}</p><p>Eye color: ${charL.eye_color}</p><p>Birth year: ${charL.birth_year}</p><p>Gender: ${charL.gender}</p>`;
     
-    
+    console.log(charL)
     if (t.url == charL.homeworld) {
       detailsOutput.innerHTML = `<h4>${t.name}</h4><p>Rotation period: ${t.rotation_period} hours</p><p>Orbital period: ${t.orbital_period} days</p><p>Diameter: ${t.diameter} km</p><p>Climate: ${t.climate}</p><p>Gravity: ${t.gravity}</p><p>Terrain: ${t.terrain}</p>`
     } else if (t.url == charL.species) {
-      detailsOutput.innerHTML = "species"
+      detailsOutput.innerHTML = `<h4>${t.name}</h4>`
     } else if (t.url == charL.starships){
-      detailsOutput.innerHTML = "starships"
+      detailsOutput.innerHTML = `<h4>${t.name}</h4>`
     } else {
-      detailsOutput.innerHTML = "else"
+      detailsOutput.innerHTML = `<h4>${t.name}</h4>`
     }
   }, 1000)
 }
