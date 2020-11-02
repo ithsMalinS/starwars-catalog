@@ -46,10 +46,7 @@ async function renderDetails(charL, t) {
   }, 1000)
 }
 async function makeReqDetails(charL, namnet) {
-  if (charL.name != currentCharacter.name) {
-    details.innerHTML = '<div class="loader"></div>'
-  }
-
+  details.innerHTML = '<div class="loader"></div>'
 
   let t
   if (charL[namnet].length === 0) {
