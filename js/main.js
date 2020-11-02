@@ -4,6 +4,8 @@ const nextButton = document.querySelector(".next");
 const details = document.querySelector(".character-details");
 const detailsOutput = document.querySelector(".details2");
 
+let currentPerson
+
 prevButton.addEventListener("click", function() {
   const pageCount = document.querySelector(".current-side")
   counter--
@@ -24,12 +26,12 @@ nextButton.addEventListener("click", function() {
 })
 
 async function renderDetails(charL, t) {
-  console.log(t)
+  
   setTimeout(function() {
     details.innerHTML =
     `<h4>${charL.name}</h4><p>Height: ${charL.height} cm</p><p>Mass: ${charL.mass} kg</p><p>Hair color: ${charL.hair_color}</p><p>Skin color: ${charL.skin_color}</p><p>Eye color: ${charL.eye_color}</p><p>Birth year: ${charL.birth_year}</p><p>Gender: ${charL.gender}</p>`;
     
-    console.log(t)
+    
     if (t.url == charL.homeworld) {
       detailsOutput.innerHTML = `<h4>${t.name}</h4><p>Rotation period: ${t.rotation_period} hours</p><p>Orbital period: ${t.orbital_period} days</p><p>Diameter: ${t.diameter} km</p><p>Climate: ${t.climate}</p><p>Gravity: ${t.gravity}</p><p>Terrain: ${t.terrain}</p>`
     } else if (t.url == charL.species) {
@@ -45,11 +47,11 @@ async function makeReqDetails(charL, namnet) {
   details.innerHTML = '<div class="loader"></div>'
   detailsOutput.innerHTML = '<div class="loader"></div>'
   let t
-  console.log(namnet)
+  
   if (namnet == 'vehicles' || namnet == 'starships') {
     t = await fetchData(charL[namnet][0]);
   } else {
-    console.log('hallå')
+    //console.log('hallå')
     t = await fetchData(charL[namnet]);
   }
   renderDetails(charL, t)
@@ -67,6 +69,8 @@ async function renderPeople(charL) {
   for (let i = 0; i < characters.length; i++) {
     characters[i].innerHTML = charL[i+(counter*6)].name + '<span class="hidden"> ▸</span>';
     characters[i].addEventListener("click", function () {
+      currentPerson = charL[i+(counter*6)]
+      //console.log(currentPerson)
       let charSpan = document.querySelectorAll(".character-list span")
       for(let i = 0; i < characters.length; i++) {
         characters[i].classList.remove('chosen-character')
@@ -88,11 +92,10 @@ async function renderPeople(charL) {
   let navbtns= document.querySelectorAll('.dNavButton')
   for (let i = 0; i < navbtns.length; i++) {
     navbtns[i].addEventListener('click', function() {
-      console.log(this.innerText)
       if (this.innerText == 'Planet') {
-        makeReqDetails(charL[i+(counter*6)], 'homeworld')
+        makeReqDetails(currentPerson, 'homeworld')
       } else {
-        makeReqDetails(charL[i+(counter*6)], this.innerText.toLowerCase())
+        makeReqDetails(currentPerson, this.innerText.toLowerCase())
       }
     })
   }
@@ -102,7 +105,6 @@ async function fetchData(url) {
   //document.querySelector("").classList.remove("hidden");
   let request = await fetch(url);
   data = await request.json();
-  //console.log(data.next);
   return data;
 }
 async function makeReqPeople() {
