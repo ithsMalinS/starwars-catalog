@@ -11,7 +11,7 @@ prevButton.addEventListener("click", function() {
     counter = 13
   }
   pageCount.innerHTML = counter +1
-  makeReqPeople(counter)
+  makeReqPeople()
 })
 nextButton.addEventListener("click", function() {
   const pageCount = document.querySelector(".current-side")
@@ -28,14 +28,30 @@ async function renderDetails(charL, t) {
   setTimeout(function() {
     details.innerHTML =
     `<h4>${charL.name}</h4><p>Height: ${charL.height} cm</p><p>Mass: ${charL.mass} kg</p><p>Hair color: ${charL.hair_color}</p><p>Skin color: ${charL.skin_color}</p><p>Eye color: ${charL.eye_color}</p><p>Birth year: ${charL.birth_year}</p><p>Gender: ${charL.gender}</p>`;
-    detailsOutput.innerHTML = `<h4>${t.name}</h4><p>Rotation period: ${t.rotation_period} hours</p><p>Orbital period: ${t.orbital_period} days</p><p>Diameter: ${t.diameter} km</p><p>Climate: ${t.climate}</p><p>Gravity: ${t.gravity}</p><p>Terrain: ${t.terrain}</p>`
+    
+    console.log(t)
+    if (t.url == charL.homeworld) {
+      detailsOutput.innerHTML = `<h4>${t.name}</h4><p>Rotation period: ${t.rotation_period} hours</p><p>Orbital period: ${t.orbital_period} days</p><p>Diameter: ${t.diameter} km</p><p>Climate: ${t.climate}</p><p>Gravity: ${t.gravity}</p><p>Terrain: ${t.terrain}</p>`
+    } else if (t.url == charL.species) {
+      detailsOutput.innerHTML = "species"
+    } else if (t.url == charL.starships){
+      detailsOutput.innerHTML = "starships"
+    } else {
+      detailsOutput.innerHTML = "else"
+    }
   }, 1000)
 }
 async function makeReqDetails(charL, namnet) {
   details.innerHTML = '<div class="loader"></div>'
   detailsOutput.innerHTML = '<div class="loader"></div>'
-  let t = await fetchData(charL[namnet]);
-
+  let t
+  console.log(namnet)
+  if (namnet == 'vehicles' || namnet == 'starships') {
+    t = await fetchData(charL[namnet][0]);
+  } else {
+    console.log('hallå')
+    t = await fetchData(charL[namnet]);
+  }
   renderDetails(charL, t)
 }
 async function renderPeople(charL) {
@@ -60,7 +76,6 @@ async function renderPeople(charL) {
       for (current of NavButton) {
         current.classList.remove('hidden')
         current.addEventListener("click", function() {
-          console.log(current.innerText)
         })
       }
       makeReqDetails(charL[i+(counter*6)], "homeworld");
@@ -69,6 +84,17 @@ async function renderPeople(charL) {
       chosenChar.classList.remove("hidden")
       //characters[i].innerText += '▸'
     });
+  }
+  let navbtns= document.querySelectorAll('.dNavButton')
+  for (let i = 0; i < navbtns.length; i++) {
+    navbtns[i].addEventListener('click', function() {
+      console.log(this.innerText)
+      if (this.innerText == 'Planet') {
+        makeReqDetails(charL[i+(counter*6)], 'homeworld')
+      } else {
+        makeReqDetails(charL[i+(counter*6)], this.innerText.toLowerCase())
+      }
+    })
   }
 }
 
