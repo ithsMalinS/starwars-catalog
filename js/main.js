@@ -24,6 +24,7 @@ nextButton.addEventListener("click", function() {
 })
 
 async function renderDetails(charL, t) {
+  console.log(t)
   setTimeout(function() {
     details.innerHTML =
     `<h4>${charL.name}</h4><p>Height: ${charL.height} cm</p><p>Mass: ${charL.mass} kg</p><p>Hair color: ${charL.hair_color}</p><p>Skin color: ${charL.skin_color}</p><p>Eye color: ${charL.eye_color}</p><p>Birth year: ${charL.birth_year}</p><p>Gender: ${charL.gender}</p>`;
