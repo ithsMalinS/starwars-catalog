@@ -32,7 +32,7 @@ async function renderDetails(charL, t) {
   setTimeout(function() {
     details.innerHTML =
     `<h4>${charL.name}</h4><p>Height: ${charL.height} cm</p><p>Mass: ${charL.mass} kg</p><p>Hair color: ${charL.hair_color}</p><p>Skin color: ${charL.skin_color}</p><p>Eye color: ${charL.eye_color}</p><p>Birth year: ${charL.birth_year}</p><p>Gender: ${charL.gender}</p>`;
-    
+    console.log('hallå')
     if (t.url == charL.species) {
       detailsOutput.innerHTML = `<h4>${t.name}</h4><p>Average height: ${t.average_height}</p><p>Average lifespan: ${t.average_lifespan}</p><p>Classification: ${t.classification} </p><p>Eye colors: ${t.eye_colors} </p><p>Hair colors: ${t.hair_colors}</p><p>Language: ${t.language}</p>`
       console.log(t)
