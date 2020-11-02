@@ -119,7 +119,6 @@ async function makeReqPeople() {
       temp.push(current);
     }
   }
-  console.log(temp)
   await renderPeople(temp);
 }
 
