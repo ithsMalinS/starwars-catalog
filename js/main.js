@@ -39,6 +39,7 @@ async function renderDetails(charL, t) {
     } else if (t.url == charL.species) {
       detailsOutput.innerHTML = `<h4>${t.name}</h4>`
     } else if (t.url == charL.starships){
+      console.log("hej")
       detailsOutput.innerHTML = `<h4>${t.name}</h4><p>model: ${t.model} hours</p><p>manufacturer: ${t.manufacturer} </p><p>length: ${t.length} </p><p>crew: ${t.crew}</p><p>passengers: ${t.passengers}</p><p>starship_class: ${t.starship_class}</p>`
     } else {
       detailsOutput.innerHTML = `<h4>${t.name}</h4>`
