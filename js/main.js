@@ -46,12 +46,13 @@ async function renderDetails(charL, t) {
   }, 1000)
 }
 async function makeReqDetails(charL, namnet) {
-  details.innerHTML = '<div class="loader"></div>'
+
 
   let t
   if (charL[namnet].length === 0) {
     renderNoInfo(namnet)
   } else {
+    details.innerHTML = '<div class="loader"></div>'
     detailsOutput.innerHTML = '<div class="loader"></div>'
     if (namnet == 'vehicles' || namnet == 'starships') {
       t = await fetchData(charL[namnet][0]);
