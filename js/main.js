@@ -52,7 +52,7 @@ async function makeReqDetails(charL, namnet) {
   if (charL[namnet].length === 0) {
     renderNoInfo(namnet)
   } else {
-    details.innerHTML = '<div class="loader"></div>'
+
     detailsOutput.innerHTML = '<div class="loader"></div>'
     if (namnet == 'vehicles' || namnet == 'starships') {
       t = await fetchData(charL[namnet][0]);
@@ -88,6 +88,7 @@ async function renderPeople(charL) {
         current.addEventListener("click", function() {
         })
       }
+      details.innerHTML = '<div class="loader"></div>'
       makeReqDetails(charL[i+(counter*6)], "homeworld");
       characters[i].classList.add("chosen-character")
       const chosenChar = document.querySelector(".chosen-character > span")
@@ -132,7 +133,6 @@ async function makeReqPeople() {
     await renderPeople(temp);
   } else {
     renderPeople(characterList)
-
   }
 }
 
