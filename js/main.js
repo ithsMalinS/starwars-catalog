@@ -36,7 +36,7 @@ async function renderDetails(charL, t) {
       detailsOutput.innerHTML = `<h4>${t.name}</h4><p>Average height: ${t.average_height}</p><p>Average lifespan: ${t.average_lifespan}</p><p>Classification: ${t.classification} </p><p>Eye colors: ${t.eye_colors} </p><p>Hair colors: ${t.hair_colors}</p><p>Language: ${t.language}</p>`
     } else if (t.url == charL.homeworld) {
       detailsOutput.innerHTML = `<h4>${t.name}</h4><p>Rotation period: ${t.rotation_period} hours</p><p>Orbital period: ${t.orbital_period} days</p><p>Diameter: ${t.diameter} km</p><p>Climate: ${t.climate}</p><p>Gravity: ${t.gravity}</p><p>Terrain: ${t.terrain}</p>`
-    } else if (t.url == charL.starships[0]){
+    } else if (t.url == charL.starships[0]) {
       detailsOutput.innerHTML = `<h4>${t.name}</h4><p>model: ${t.model} </p><p>manufacturer: ${t.manufacturer} </p><p>length: ${t.length} </p><p>Crew: ${t.crew}</p><p>Passengers: ${t.passengers}</p><p>Starship class: ${t.starship_class}</p>`
     } else {
       detailsOutput.innerHTML = `<h4>${t.name}</h4><p>Model: ${t.model} </p><p>Manufacturer: ${t.manufacturer} </p><p>Cost in credits: ${t.cost_in_credits}</p><p>Length: ${t.length} </p><p>Max Speed: ${t.max_atmosphering_speed}</p><p>Vehicle class: ${t.vehicle_class}</p>`
@@ -44,8 +44,6 @@ async function renderDetails(charL, t) {
   }, 1000)
 }
 async function makeReqDetails(charL, namnet) {
-
-
   let t
   if (charL[namnet].length === 0) {
     renderNoInfo(namnet)
@@ -106,6 +104,9 @@ async function renderPeople(charL) {
 }
 
 async function fetchData(url) {
+  if (url.substring(4, 5) != "s") {
+    url = "https" + url.substring(4)
+  }
   let request = await fetch(url);
   data = await request.json();
   return data;
